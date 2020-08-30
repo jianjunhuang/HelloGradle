@@ -1,6 +1,57 @@
-task hello{
+task hello {
     doLast {
         println 'hello'
     }
 
+}
+task printList {
+    doLast{
+
+        def list = [1, 2, 3, 4, 5, 6]
+        println list.getClass().name
+        println list[-1]//倒数第一个
+        println list[1..3]//1 - 3 个
+        list.forEach {
+            println it
+        }
+    }
+
+}
+
+
+task printlnMap {
+    doLast{
+        def map = ['w': 1, 'h': 2]
+
+        println map['w']
+        println map.h
+    }
+
+}
+
+task methodTest {
+    doLast{
+        def a = 1
+        a = plus  a,1
+        println a
+        println plus (1,2)
+    }
+
+}
+
+def plus(int a, int b) {
+//    return a+b
+    return a+b
+}
+
+task javaBeanTest{
+    doLast{
+        def info = new Info()
+        info.id = 1
+        println info.id
+    }
+}
+
+class Info{
+    int id
 }
