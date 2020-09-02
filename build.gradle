@@ -5,7 +5,7 @@ task hello {
 
 }
 task printList {
-    doLast{
+    doLast {
 
         def list = [1, 2, 3, 4, 5, 6]
         println list.getClass().name
@@ -20,7 +20,7 @@ task printList {
 
 
 task printlnMap {
-    doLast{
+    doLast {
         def map = ['w': 1, 'h': 2]
 
         println map['w']
@@ -30,28 +30,40 @@ task printlnMap {
 }
 
 task methodTest {
-    doLast{
+    doLast {
         def a = 1
-        a = plus  a,1
+        a = plus a, 1
         println a
-        println plus (1,2)
+        println plus(1, 2)
     }
 
 }
 
 def plus(int a, int b) {
 //    return a+b
-    return a+b
+    return a + b
 }
 
-task javaBeanTest{
-    doLast{
+task javaBeanTest {
+    doLast {
         def info = new Info()
         info.id = 1
         println info.id
     }
 }
 
-class Info{
+class Info {
     int id
+}
+
+task first {
+    doLast {
+        println 'hello'
+    }
+}
+
+task next (dependsOn: first) {
+    doLast {
+        println 'world'
+    }
 }
