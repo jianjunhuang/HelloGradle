@@ -56,14 +56,36 @@ class Info {
     int id
 }
 
+//task 依赖
 task first {
     doLast {
         println 'hello'
     }
 }
 
-task next (dependsOn: first) {
+task next(dependsOn: first) {
     doLast {
         println 'world'
+    }
+}
+
+//任务间通过 api 交互
+
+task ex36Hi {
+    doLast {
+        println("ex36 do last")
+    }
+    doFirst {
+        println("ex36 do first")
+    }
+}
+
+task ex36 {
+
+    doLast {
+        println("ex36 >>")
+        ex36Hi.doLast {
+            println("ex36 >>")
+        }
     }
 }
