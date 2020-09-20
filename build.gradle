@@ -89,3 +89,26 @@ task ex36 {
         }
     }
 }
+
+def Task ex41CreateTask1 = task(ex41CreateTask1)
+ex41CreateTask1.doLast {
+    println("create task by task name")
+}
+
+def Task ex41CreateTask2 = task(ex41CreateTask2, group: BasePlugin.BUILD_GROUP)
+ex41CreateTask2.doLast {
+    println("create task by task name & map")
+    println("task group :${ex41CreateTask2.group}")
+}
+
+task ex41CreateTask3 {
+    description 'test'
+    doLast {
+        println 'ex42 3'
+        println "task -> $description"
+    }
+}
+
+ex41CreateTask2.shouldRunAfter(ex41CreateTask1)
+//ex41CreateTask2.mustRunAfter(ex41CreateTask1)
+ex41CreateTask1.enabled = false
