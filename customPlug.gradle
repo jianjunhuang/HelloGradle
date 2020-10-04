@@ -1,0 +1,23 @@
+apply plugin: 'grovvy'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+
+
+class CustomPlugin implements Plugin<Project> {
+
+    @Override
+    void apply(Project target) {
+
+    }
+
+
+}
+
+task customTask {
+    doLast {
+        println('custom task')
+    }
+}
